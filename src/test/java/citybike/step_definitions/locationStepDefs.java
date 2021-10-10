@@ -1,5 +1,6 @@
 package citybike.step_definitions;
 
+import citybike.utils.ConfigurationReader;
 import citybike.utils.apiUtils;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
@@ -9,7 +10,7 @@ public class locationStepDefs {
     Response response;
     @When("user sends get request to endpoint")
     public void user_sends_get_request_to_endpoint() {
-        String uri="http://api.citybik.es/v2/networks";
+        String uri= ConfigurationReader.get("uri");
         response= apiUtils.getRequest(uri);
     }
     @Then("verify that respond status code is {int} and content-type is {string}")
